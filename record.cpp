@@ -11,11 +11,10 @@ const int RECORDING_BUFFER_SECONDS = 16;    //buffersize, providing a safe pad o
 
 const int SCREEN_WIDTH = 640;               //window width
 const int SCREEN_HEIGHT = 480;              //window height
-//MAX_RECORDING_SECONDS    // uwu delete this?
 
 //enumerations for recording states used in switchcase instruction
 enum RecordingState{
-    DEVICE_SELECTION,   // user selects one of available devices
+    DEVICE_SELECTION,   //user selects one of available devices
     WAITING,            //waiting for user to start recording
     STOPPED,
     RECORDING,          //activate audio device and record
@@ -60,7 +59,6 @@ void stop_recording();
 RecordingState get_next_state(RecordingState, short);
 
 int main() {
-    // cout<<"Recording your voice for 5 seconds. then starting the playback automatically."<<endl; // uwu : delete this
     if (SDL_Init( SDL_INIT_EVERYTHING ) < 0) //make sure SDL initilizes correctly
         reportError("Initilizing SDL error.");
     
@@ -195,7 +193,6 @@ int main() {
             break; 
 
         }
-        //SDL_Delay(40);    // uwu : delete this
     }
 
     close();
@@ -280,9 +277,9 @@ bool loadMedia() {          //creats a simple window to receive events
         reportError("Renderer creation failed");
         success = false;
     }
-    SDL_SetRenderDrawColor(gRenderer, 0, 0xff, 0xff, 0); //setting the color for clearing renderer
-    SDL_RenderClear(gRenderer);     //clearing the renderer with set color
-    SDL_RenderPresent(gRenderer);   //drawing the renderer to the window
+    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);     //setting black color
+    SDL_RenderClear(gRenderer);                        //clearing the renderer with set color
+    SDL_RenderPresent(gRenderer);                      //drawing the renderer to the window
     return success;
 }
 
